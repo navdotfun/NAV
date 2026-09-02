@@ -19,8 +19,8 @@ const GREEN = "#00c805";
 const GREEN_DIM = "#6fd97a";
 const GREEN_FAINT = "rgba(0, 200, 5, 0.16)";
 const GOLD = "#e8c14a";
-const GOLD_DIM = "rgba(201, 162, 39, 0.55)";
-const MUTED = "#93a4b1";
+const GOLD_DIM = "rgba(214, 178, 64, 0.75)";
+const MUTED = "#a7b7c2";
 const MONO = "'IBM Plex Mono', 'Menlo', 'Consolas', monospace";
 
 type Market = { sym: string; ltv: number; lt: number; bonus: number };
@@ -100,8 +100,8 @@ export default function CreditEngine({ className = "" }: { className?: string })
         x: leftX,
         y: gap + i * (cellH + gap) + cellH / 2,
       }));
-      const pool: Pt = { x: w * (narrow ? 0.46 : 0.47), y: h / 2 };
-      const poolR = Math.min(h * 0.30, narrow ? 64 : 96);
+      const pool: Pt = { x: w * (narrow ? 0.48 : 0.47), y: h / 2 };
+      const poolR = Math.min(h * 0.30, narrow ? 52 : 96);
       const nodeW = narrow ? 108 : 150;
       const nodeH = narrow ? 40 : 52;
       const rightX = w - nodeW / 2 - (narrow ? 8 : 26);
@@ -193,9 +193,9 @@ export default function CreditEngine({ className = "" }: { className?: string })
       const fs = narrow ? 9 : 10.5;
 
       /* rails */
-      L.railsIn.forEach((r) => drawRail(r, 0.14));
-      drawRail(L.railDraw, 0.2);
-      drawRail(L.railRepay, 0.1);
+      L.railsIn.forEach((r) => drawRail(r, 0.32));
+      drawRail(L.railDraw, 0.42);
+      drawRail(L.railRepay, 0.22);
       ctx.save();
       ctx.strokeStyle = GOLD_DIM;
       ctx.lineWidth = 1;
@@ -225,10 +225,11 @@ export default function CreditEngine({ className = "" }: { className?: string })
         ctx.strokeStyle = `rgba(0, 200, 5, ${0.75 * breathe})`;
         ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(mx + mw * (c.m.ltv / 100), my); ctx.stroke();
         /* liquidation tick */
-        ctx.strokeStyle = "rgba(255, 107, 111, 0.8)";
+        ctx.strokeStyle = "rgba(255, 107, 111, 0.95)";
+        ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(mx + mw * (c.m.lt / 100), my - 3);
-        ctx.lineTo(mx + mw * (c.m.lt / 100), my + 3);
+        ctx.moveTo(mx + mw * (c.m.lt / 100), my - 4);
+        ctx.lineTo(mx + mw * (c.m.lt / 100), my + 4);
         ctx.stroke();
         label(`LTV ${c.m.ltv}`, x + w / 2, y + h - 18, fs - 2, MUTED, "center", 1);
       });
@@ -284,11 +285,11 @@ export default function CreditEngine({ className = "" }: { className?: string })
       /* rail captions */
       if (!narrow) {
         const mid = cubic(L.railDraw, 0.55);
-        label("DRAW · 30 BPS ORIGINATION", mid.x - 10, mid.y - 12, fs - 2, MUTED, "center", 1);
+        label("DRAW · 30 BPS ORIGINATION", mid.x - 10, mid.y - 12, fs - 1, MUTED, "center", 1);
         const fm = cubic(L.railFee, 0.42);
-        label("FEE RAIL · PERMISSIONLESS SKIM", fm.x - 6, fm.y + 24, fs - 2, GOLD_DIM, "center", 1);
+        label("FEE RAIL · PERMISSIONLESS SKIM", fm.x - 6, fm.y + 24, fs - 1, GOLD, "center", 1);
         const cm = cubic(L.railsIn[0], 0.45);
-        label("COLLATERAL LOCKS", cm.x, cm.y - 12, fs - 2, MUTED, "center", 1);
+        label("COLLATERAL LOCKS", cm.x, cm.y - 12, fs - 1, MUTED, "center", 1);
       }
 
       /* particles — additive pass */

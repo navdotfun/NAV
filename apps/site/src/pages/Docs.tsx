@@ -1,11 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { lazy, Suspense } from "react";
 import type { ReactNode } from "react";
 
-// Repository tab is code-split: it carries full contract/frontend source snapshots.
-const Repo = lazy(() => import("../repo/Repo"));
 import { FlywheelFig, ArbitrageFig, RedemptionFig, RegistryFig } from "../components/PixelExplainers";
 import { Tape } from "../components/Tape";
 import { Header } from "../components/Header";
@@ -22,7 +19,6 @@ const DOCS = [
   { slug: "the-pit", label: "Derivatives", kicker: "03", md: pitMd },
   { slug: "credit", label: "Credit", kicker: "04", md: creditMd },
   { slug: "yield-layer", label: "Yield Layer", kicker: "05", md: yieldMd },
-  { slug: "repository", label: "Repository", kicker: "06", md: "" },
 ] as const;
 
 /**
@@ -100,17 +96,7 @@ export function Docs() {
             </nav>
 
             {/* document */}
-            {active.slug === "repository" ? (
-              <Suspense
-                fallback={
-                  <div className="border hairline bg-white px-6 py-10 text-center">
-                    <span className="px-label text-muted">Loading repository…</span>
-                  </div>
-                }
-              >
-                <Repo />
-              </Suspense>
-            ) : (
+            {(
               <article className="docs-prose border hairline bg-white px-6 py-8 md:px-12 md:py-12">
                 {splitSections(active.md).map((sec, i) => {
                   const fig = FIGS[active.slug]?.find((f) => sec.heading.includes(f.match));

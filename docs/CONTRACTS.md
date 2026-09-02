@@ -26,7 +26,7 @@ Status: contracts live and wired (vault ↔ accumulator ↔ splitter); registry 
 | NAV/WETH pool (Uniswap v3, 1%) | `0x24c0B949ca94E90f325CE7Fd8D6E8b6EE92De20E` | [pool](https://robinhoodchain.blockscout.com/address/0x24c0B949ca94E90f325CE7Fd8D6E8b6EE92De20E) |
 | LpTimelock (30-day LP lock) | `0xA5782C0A38b5d2C9fec4A6F11d2c0a94A21D36c6` | [verified source](https://robinhoodchain.blockscout.com/address/0xA5782C0A38b5d2C9fec4A6F11d2c0a94A21D36c6?tab=contract) |
 | LP position NFT | tokenId `921454` (NonfungiblePositionManager `0x73991a25C818Bf1f1128dEAaB1492D45638DE0D3`) | [lock tx](https://robinhoodchain.blockscout.com/tx/0xf701440e3552148d0924d912843a591f073c40b054b2097b0147cd958f4e30fa) |
-| Lock controller | deployer `0xa55e7Cc7cF79f2AECb5AA9D377a1ed59aA95998d` | — |
+| Lock controller | NavCrank `0x15F15c5513fb076ffaD48c80Ad65CC3EB009dD1e` (two-step transfer, on-chain) | [accept tx](https://robinhoodchain.blockscout.com/tx/0x1c076d92173749498f747c299c21f2360f6600f16e1f5f40e41a5167ece9eab3) |
 | Unlock time | `1790800516` (30 Sep 2026 20:35 UTC) — `extend`/`extendBy` forward-only, `release(to)` to any wallet after expiry, `collectFees(to)` any time (fees only) | — |
 
 LpTimelock cannot decrease liquidity (no such function exists in the contract); Sourcify exact match [46958586](https://sourcify.dev/server/v2/contract/4663/0xA5782C0A38b5d2C9fec4A6F11d2c0a94A21D36c6). `NavLister.sol` (atomic list-and-lock helper) is in the repo for future listings but the live TGE executed via direct NPM calls + separate lock.

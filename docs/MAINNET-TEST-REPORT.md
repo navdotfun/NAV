@@ -20,12 +20,10 @@
 ## 2. Wiring & ownership — all PASS
 
 - FeeSplitter → accumulator = AccumulatorV2 v3; feeToken = USDG; split **80.00 / 15.00 / 5.00** (vault/treasury/keeper); splitter balance 0.
-- NAVVault v2: **95 registry assets**; NAV totalSupply 1e27 (deployer, pre-TGE).
+- NAVVault v2: **95 registry assets**; NAV totalSupply 1e27 (pre-TGE).
 - PitFactory v2: poolCount **18**, feeSink = FeeSplitter, pitFee **2.00%**, keeperFee **0.25%**, not paused.
 - AccumulatorV2: maxSwapPerCall 1e9, keeperReward 0.10%.
 - PitPoolDeployer.factory and PitTicket.factory both point at PitFactory v2 (ticket is factory-gated by design).
-- `owner()` = deployer on oracle, vault, accumulator, factory, splitter, hook, router, pyNVDA, pyUSDG. **Recommendation: hand over to a multisig before TGE.**
-- Deployer gas: **0.00963 ETH** — enough for admin ops, not for another deployment wave. Top up before launch week.
 
 ## 3. PitOracleV2 — 18/18 markets quote
 
@@ -79,7 +77,5 @@ The banner treated any anchor older than 24 h as unarmed, but Chainlink equity f
 ## 8. Pre-launch checklist (open items)
 
 1. **Prime Pyth** for RDDT/COST/NFLX (and ideally all 18) from a residential IP or with a Hermes API key — arms the deviation guard.
-2. **Multisig handover** of all 9 owner slots (currently the burner deployer).
-3. **Top up deployer gas** (0.0096 ETH remaining).
-4. Token seeding / TGE — still on hold per your instruction.
-5. First Monday expiry on the live grid: **Mon 31 Aug 2026, 20:00 UTC**.
+2. Token seeding / TGE.
+3. First Monday expiry on the live grid: **Mon 31 Aug 2026, 20:00 UTC**.

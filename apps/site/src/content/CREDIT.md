@@ -52,4 +52,4 @@ Each market is a standalone contract holding only its own collateral and its own
 
 ## Verification
 
-The contracts shipped after a **~109.6M-check verification campaign**: a 102.9M-check differential big-integer harness mirroring every state transition, 2.8M fuzz executions, 3.84M invariant assertions, 56 unit tests, and the full Slither detector suite — findings and methodology are published in the [Repository](/docs/repository) tab (audits 10 and 11).
+The contracts shipped after a **~109.6M-check verification campaign**: a 102.9M-check differential big-integer harness mirroring every state transition, 2.8M fuzz executions, 3.84M invariant assertions, 56 unit tests, and the full Slither detector suite — findings and methodology are published in the official repository at [github.com/navdotfun/NAV](https://github.com/navdotfun/NAV) (audits 10 and 11).

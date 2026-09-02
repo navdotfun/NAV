@@ -27,5 +27,5 @@ export const CREDIT_ORIGINATION_BPS = 30;
 export const CREDIT_RESERVE_FACTOR_PCT = 20;
 export const CREDIT_SKIM_BOUNTY_BPS = 5;
 
-/* Verification campaign, as published in the repository tab. */
+/* Verification campaign, as published in the audit reports. */
 export const CREDIT_CAMPAIGN_CHECKS_M = 109.6;

@@ -1,6 +1,20 @@
-# NAV Protocol
+<p align="center">
+  <img src="media/banner.png" alt="NAV Protocol — fee-funded stock accumulation, derivatives and credit on Robinhood Chain" width="100%" />
+</p>
 
-**Fee-funded stock accumulation, on-chain derivatives, isolated lending markets and a redeemable index share — live on Robinhood Chain (chain id 4663).**
+<h1 align="center">NAV Protocol</h1>
+
+<p align="center">
+  <strong>Fee-funded stock accumulation, on-chain derivatives, isolated lending markets and a redeemable index share — live on Robinhood Chain (chain id 4663).</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-live%20on%20mainnet-00c805?style=flat-square" alt="Status: live" />
+  <img src="https://img.shields.io/badge/chain-Robinhood%20Chain%20%C2%B7%204663-101418?style=flat-square" alt="Robinhood Chain 4663" />
+  <img src="https://img.shields.io/badge/contracts-immutable%20%C2%B7%20source--verified-00c805?style=flat-square" alt="Immutable, source-verified" />
+  <img src="https://img.shields.io/badge/security%20campaign-~109.6M%20checks-c9a227?style=flat-square" alt="~109.6M security checks" />
+  <img src="https://img.shields.io/badge/license-source--available-555555?style=flat-square" alt="Source-available" />
+</p>
 
 NAV is a fully on-chain protocol stack built around one idea: route real trading fees into a transparent, redeemable vault of tokenized stocks, and price derivatives from measured market data rather than quoted volatility. No admin keys over user funds, no keepers, no off-chain dependencies. Every contract below is immutable and source-verified.
 
@@ -96,6 +110,21 @@ The protocol has been through repeated adversarial review before and after each 
 
 Vulnerability disclosure: see [`SECURITY.md`](SECURITY.md).
 
+## Interface
+
+The protocol ships with two zero-backend frontends: **nav.fun** (protocol site) and **the Floor** (on-chain stock terminal). Every number rendered is read live from the chain — there is no indexer, no API server and no database. Captures below are from production.
+
+| | |
+|:---:|:---:|
+| ![nav.fun — protocol homepage](media/qa/site-hero.png) | ![NAV Credit — homepage introduction](media/qa/site-credit-engine.png) |
+| **nav.fun** — protocol homepage | **NAV Credit** — homepage introduction |
+| ![NAV Credit — live market parameters](media/qa/site-credit-markets.png) | ![Documentation — 04 · Credit](media/qa/docs-credit.png) |
+| **NAV Credit** — live market parameters | **Documentation** — 04 · Credit |
+| ![The Floor — SWAP](media/qa/floor-swap.png) | ![The Floor — DERIVS](media/qa/floor-derivs.png) |
+| **The Floor — F1 SWAP** — dual-venue router, fair-price shield | **The Floor — F2 DERIVS** — The Pit + streamia options |
+| ![The Floor — VAULT](media/qa/floor-vault.png) | ![The Floor — CREDIT](media/qa/floor-credit.png) |
+| **The Floor — F3 VAULT** — live holdings, crank engine | **The Floor — F4 CREDIT** — isolated lending markets |
+
 ## Repository layout
 
 ```
@@ -104,7 +133,12 @@ contracts/   Foundry source of every deployed contract (verified on-chain),
 apps/        Frontend sources — site/ (nav.fun) and floor/ (the on-chain terminal)
 docs/        Protocol documentation as published at nav.fun/#/docs
 audits/      Sanitized audit reports and coverage summaries (12 reports)
+media/       Brand assets and production interface captures
 ```
+
+## License
+
+Source-available, published for transparency and independent verification. All rights reserved — no license is granted to reuse, modify or redistribute this code.
 
 ## Disclaimer
 

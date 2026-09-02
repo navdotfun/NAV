@@ -179,7 +179,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
   box-shadow: inset 0 1px 0 #ffffff, 0 1px 0 rgba(12, 17, 22, 0.04);
 }
 @supports (backdrop-filter: blur(8px)) {
-  .site-header { background: rgba(247, 249, 250, 0.85); backdrop-filter: saturate(1.4) blur(10px); }
+  .site-header { background: rgba(247, 249, 250, 0.96); backdrop-filter: saturate(1.4) blur(12px); }
 }
 .brand-word { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: 0.01em; line-height: 1; }
 .brand-word .fun { font-family: var(--font-pixel); font-weight: 400; font-size: 22px; color: var(--color-rh-big); margin-left: 1px; }

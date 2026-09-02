@@ -2,7 +2,7 @@
 
 Chain: Robinhood Chain mainnet (Arbitrum Orbit L2, chain id 4663). Solidity 0.8.24–0.8.36, OpenZeppelin 5.x, Foundry toolchain.
 
-Source code, engineering specifications and the full audit index are published in the [Repository tab](#/docs/repository) of these docs — deployed contract sources, application modules, per-engagement audit reports and the complete test inventory.
+Source code, engineering specifications and the full audit index are published in the official repository at [github.com/navdotfun/NAV](https://github.com/navdotfun/NAV) — deployed contract sources, application modules, per-engagement audit reports and coverage summaries.
 
 ## Design principles
 
@@ -142,4 +142,4 @@ Idle Pit collateral deployed as hook-gated Uniswap v4 liquidity with instant rec
 
 - **Verification policy:** every deployed contract is source-verified on the Robinhood Chain explorer immediately after deployment, and its address is added to these docs before any wiring or announcement.
 - **Audit programme:** each product ships only after a multi-pass internal campaign — line-by-line review, unit and mainnet-fork suites, multi-seed fuzzing, stateful invariant testing, adversarial attack suites and static analysis — with every finding fixed or formally accepted on the record.
-- **Published findings:** sanitized audit reports and coverage statistics are published in the [Repository tab](#/docs/repository); exploit constructions for economically sensitive paths are withheld by design. Suspected vulnerabilities should be reported privately through the channels at nav.fun, never as public issues.
+- **Published findings:** sanitized audit reports and coverage statistics are published at [github.com/navdotfun/NAV](https://github.com/navdotfun/NAV); exploit constructions for economically sensitive paths are withheld by design. Suspected vulnerabilities should be reported privately through the channels at nav.fun, never as public issues.

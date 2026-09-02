@@ -270,7 +270,7 @@ partitioned into {buyer payout, bounty, writer free assets}. No residue.
    B: Solidity correctness) + consolidated report, before any deployment.
 7. **Frontend:** quote parity fuzz (TS vs contract `previewOpen`, ≥ 1 M cases),
    full UI fuzz, Playwright live QA, then real-money mainnet smoke (open a 1 h
-   NVDA option with the burner, settle it after expiry, verify every fee leg).
+   NVDA option with the deployer wallet, settle it after expiry, verify every fee leg).
 8. **Deployment:** only after 1–7 pass with zero failures; Sourcify exact-match
    verification; docs + changelog same day.
 

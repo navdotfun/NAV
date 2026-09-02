@@ -23,7 +23,7 @@ export interface ProtocolConfig {
   accumulatorAddress: Address | null;
   /** NavCrank — one-tx permissionless fee pipeline (deployed 1 Sep 2026). */
   navCrankAddress: Address | null;
-  /** Vanity burner used for deployment ("A55E7" ≈ ASSET). */
+  /** Protocol deployer. */
   deployer: Address;
   /** Uniswap NAV/WETH pool fee, basis points (1%) — accrues to the locked,
       protocol-owned LP position; NAVToken itself has no transfer tax. */

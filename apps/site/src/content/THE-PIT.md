@@ -52,7 +52,7 @@ The one-input mode: pick a ticker, a direction, and a time horizon — the engin
 | `PitOracleV2` | Chainlink-anchored price reads with automatic Pyth backup; pool TWAP deviation-checked against the anchor. Fully pull-based — no heartbeats or keepers. |
 | Fee routing | Existing `FeeSplitter` (80 / 15 / 5) — no new trust assumptions. |
 
-**Trust profile (same as NAV core):** no proxies, no upgradeable code, fixed fee bounds, no admin path to LP funds or ticket payouts, all per-pool parameters immutable at deploy. Admin keys are deployer-held today; a multisig + timelock handover is planned.
+**Trust profile (same as NAV core):** no proxies, no upgradeable code, fixed fee bounds, no admin path to LP funds or ticket payouts, all per-pool parameters immutable at deploy.
 
 ## Security programme
 

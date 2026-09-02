@@ -48,6 +48,10 @@ NAV is a fully on-chain protocol stack built around one idea: route real trading
 | CreditPair QQQ/USDG | [`0xF07c295FB066fB1ae7867dc1235cdee009e2cafc`](https://robinhoodchain.blockscout.com/address/0xF07c295FB066fB1ae7867dc1235cdee009e2cafc) |
 | CreditPair AAPL/USDG | [`0x4b78AeF24A62896a4f1381969EF4C9D28d2a567c`](https://robinhoodchain.blockscout.com/address/0x4b78AeF24A62896a4f1381969EF4C9D28d2a567c) |
 | CreditPair TSLA/USDG | [`0x82797A109A840fa975616499F440C080730E1c6a`](https://robinhoodchain.blockscout.com/address/0x82797A109A840fa975616499F440C080730E1c6a) |
+| NavArena | [`0x51506936ae5A1146D1e3C6e804f25Fb58c492cb3`](https://robinhoodchain.blockscout.com/address/0x51506936ae5A1146D1e3C6e804f25Fb58c492cb3) |
+| NavIndexFactory | [`0x0c566a9ec97D57502d557FBD3F8AB0e6059cfeC3`](https://robinhoodchain.blockscout.com/address/0x0c566a9ec97D57502d557FBD3F8AB0e6059cfeC3) |
+| NavIndexZap | [`0xD98803f42f57B8ed5ECa41312eDE366197c1808E`](https://robinhoodchain.blockscout.com/address/0xD98803f42f57B8ed5ECa41312eDE366197c1808E) |
+| NAV Blue Chips (BLUE) — first index | [`0xA8b1425656550f1172D1323DC4d174E076D72Bea`](https://robinhoodchain.blockscout.com/address/0xA8b1425656550f1172D1323DC4d174E076D72Bea) |
 
 All contracts are verified on Blockscout with exact-match bytecode.
 
@@ -107,6 +111,7 @@ The protocol has been through repeated adversarial review before and after each 
 | StockSwap | Router + frontend | >43M total executions (10.1M contract fuzz, 33M frontend fuzz) |
 | NavOptions | Options engine | 9M fuzz runs, 2.4M stateful calls, 14.4M invariant assertions, 0 failures |
 | NAV Credit | CreditPair × 4 + CreditFactory + CREDIT tab | ~109.6M checks: 102.9M randomized harness executions, 2.8M fuzz runs, 3.84M invariant assertions, 112 unit tests, Slither clean |
+| Arena + Index | NavArena, NavIndexFactory/Token/Zap | ~137.2M checks: 134.3M differential bigint harness executions, 1.2M fuzz runs, 480k invariant calls (~1.68M assertions), 0 violations |
 
 Vulnerability disclosure: see [`SECURITY.md`](SECURITY.md).
 

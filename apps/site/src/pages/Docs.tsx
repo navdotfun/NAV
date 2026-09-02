@@ -12,13 +12,17 @@ import contractsMd from "../content/CONTRACTS.md?raw";
 import pitMd from "../content/THE-PIT.md?raw";
 import yieldMd from "../content/YIELD-LAYER.md?raw";
 import creditMd from "../content/CREDIT.md?raw";
+import indexMd from "../content/INDEX.md?raw";
+import arenaMd from "../content/ARENA.md?raw";
 
 const DOCS = [
   { slug: "litepaper", label: "Litepaper", kicker: "01", md: litepaperMd },
   { slug: "contracts", label: "Contracts", kicker: "02", md: contractsMd },
   { slug: "the-pit", label: "Derivatives", kicker: "03", md: pitMd },
   { slug: "credit", label: "Credit", kicker: "04", md: creditMd },
-  { slug: "yield-layer", label: "Yield Layer", kicker: "05", md: yieldMd },
+  { slug: "index", label: "Indexes", kicker: "05", md: indexMd },
+  { slug: "arena", label: "Arena", kicker: "06", md: arenaMd },
+  { slug: "yield-layer", label: "Yield Layer", kicker: "07", md: yieldMd },
 ] as const;
 
 /**

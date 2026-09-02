@@ -41,6 +41,7 @@ import {
 } from "../lib/credit";
 import CreditEngine from "../components/CreditEngine";
 import { YIELD_VAULTS } from "../lib/yield";
+import { WORLD, ARENA_FEE_PCT, INDEX_MAX_COMPONENTS, INDEX_VAULT_SHARE_PCT } from "../lib/world";
 import { Reveal, CountUp, Led } from "../components/Motion";
 import coinsImg from "../assets/coins.gif";
 import vaultImg from "../assets/vault.gif";
@@ -143,7 +144,7 @@ const TOKENOMICS = [
 const DOCS = [
   { no: "01", title: "Litepaper", to: "/docs/litepaper", body: "The mechanism in four pages: fee routing, buy cadence, vault accounting, redemption math." },
   { no: "02", title: "Contracts", to: "/docs/contracts", body: "NAVToken, NAVVault, FeeSplitter, Accumulator — architecture, tests, verification policy." },
-  { no: "03", title: "The Pit", to: "/docs/the-pit", body: "The machinery behind F2 DERIVS — strike books, tickets, premiums feeding the vault." },
+  { no: "03", title: "The Pit", to: "/docs/the-pit", body: "The machinery behind F3 DERIVS — strike books, tickets, premiums feeding the vault." },
   { no: "04", title: "Credit", to: "/docs/credit", body: "The lending floor — four isolated USDG markets, ownerless, every fee routed to $NAV." },
   { no: "05", title: "Yield Layer", to: "/docs/yield-layer", body: "Idle collateral as Uniswap v4 liquidity — instant recall, hook fee-skim, on-chain keepers." },
 ] as const;
@@ -241,7 +242,7 @@ function FlrTickerItem({ token, enabled }: { token: StockToken; enabled: boolean
 
 /* F-key rail — presentational chrome only. The one door into the app is the
    header's Launch App button; these chips name the terminal's real views. */
-const FKEYS = ["F1 SWAP", "F2 DERIVS", "F3 VAULT", "F4 STATS", "F5 NAV.FUN", "F6 DOCS", "F7 EXPLORER"] as const;
+const FKEYS = ["F1 WORLD", "F2 SWAP", "F3 DERIVS", "F4 VAULT", "F5 CREDIT", "F6 STATS"] as const;
 
 function FloorPreview({
   vault,
@@ -634,7 +635,7 @@ export function Home() {
       </section>
 
       {/* the derivatives desk — a short editorial panel; the desk itself lives
-          at F2 DERIVS inside the Floor terminal (anchor id kept for old links) */}
+          at F3 DERIVS inside the Floor terminal (anchor id kept for old links) */}
       <section className="py-8 md:py-24 border-y hairline bg-paper-2 grain" id="pit">
         <div className="wrap">
           <div className="mb-5 md:mb-12">
@@ -642,7 +643,7 @@ export function Home() {
             <hr className="metal-rule st-rule mb-4 md:mb-8" aria-hidden="true" />
             <div className="max-w-[640px]">
               <h2 className="mt-4 text-[26px] md:text-[42px]">
-                Press <span className="ge-num">F2</span>. The terminal becomes a desk.
+                Press <span className="ge-num">F3</span>. The terminal becomes a desk.
               </h2>
               <p className="mt-3 text-[15px] md:text-[17px] text-muted">
                 There is no second app — DERIVS is a view inside the Floor terminal.{" "}
@@ -661,7 +662,7 @@ export function Home() {
           <Reveal>
             <div className="ge-panel max-w-[860px]">
               <div className="flex items-center justify-between gap-3 border-b hairline px-5 py-2.5">
-                <span className="px-label text-green-ink">F2 DERIVS — INSIDE THE FLOOR TERMINAL</span>
+                <span className="px-label text-green-ink">F3 DERIVS — INSIDE THE FLOOR TERMINAL</span>
                 <span className="flex items-center gap-2"><Led tone="crt" /><span className="px-label text-green-ink m-hide">LIVE</span></span>
               </div>
               <div className="px-5 py-4 md:px-7 md:py-5">
@@ -669,7 +670,7 @@ export function Home() {
                   <span className="ge-num text-[17px] text-ink">{PIT_MARKET_COUNT}</span> live
                   strike-book markets · max buyer loss is the premium — no liquidations, no margin
                   calls. The desk itself lives in the app:{" "}
-                  <a href="/floor/" className="font-semibold text-green-ink">open F2 DERIVS on the Floor →</a>
+                  <a href="/floor/" className="font-semibold text-green-ink">open F3 DERIVS on the Floor →</a>
                   <span className="mx-2 opacity-50">·</span>
                   <Link to="/docs/the-pit" className="font-semibold text-green-ink">read the spec →</Link>
                 </p>
@@ -710,7 +711,7 @@ export function Home() {
             <hr className="metal-rule st-rule mb-4 md:mb-8 opacity-30" aria-hidden="true" />
             <div className="max-w-[680px]">
               <h2 className="mt-4 text-[26px] md:text-[42px] text-paper">
-                Press <span className="ge-num">F4</span>. The portfolio becomes a credit line.
+                Press <span className="ge-num">F5</span>. The portfolio becomes a credit line.
               </h2>
               <p className="mt-3 text-[15px] md:text-[17px] text-muted-dark">
                 CREDIT is the lending floor inside the terminal — four isolated USDG markets
@@ -821,9 +822,87 @@ export function Home() {
             <span>
               <Link className="verify-link whitespace-nowrap" to="/docs/credit">READ THE CREDIT DOCS →</Link>
               <span className="mx-2 opacity-50">·</span>
-              <a className="verify-link whitespace-nowrap" href="/floor/">OPEN F4 CREDIT →</a>
+              <a className="verify-link whitespace-nowrap" href="/floor/">OPEN F5 CREDIT →</a>
             </span>
           </p>
+        </div>
+      </section>
+
+      {/* the overworld — Kingdoms (indexes) + Colosseum (arena) as a pixel game world */}
+      <section className="py-8 md:py-24 border-y hairline bg-[#0b0a08]" id="world">
+        <div className="wrap">
+          <div className="mb-5 md:mb-12">
+            <Reveal className="masthead mb-3 md:mb-8">
+              <p className="kicker !text-[#fb8b1e]">The overworld</p>
+              <span className="sec-no !text-[#4a4230]">No. 06</span>
+            </Reveal>
+            <hr className="metal-rule st-rule mb-4 md:mb-8 opacity-30" aria-hidden="true" />
+            <div className="max-w-[680px]">
+              <h2 className="mt-4 text-[26px] md:text-[42px] text-paper">
+                Press <span className="ge-num">F1</span>. The protocol becomes a world.
+              </h2>
+              <p className="mt-3 text-[15px] md:text-[17px] text-muted-dark">
+                WORLD is a pixel overworld inside the Floor terminal where every location is a live
+                on-chain venue — the Bazaar is the swap floor, the Bank is credit, the Mage Tower is
+                the options desk, the Treasury is the vault.{" "}
+                <span className="m-hide">
+                  Nothing on the map is a game asset: no NFTs to buy, no game token, no points. Your
+                  purse is your wallet, your standing is your on-chain record.
+                </span>{" "}
+                Two new realms open the expansion: <strong className="text-paper">The Kingdoms</strong>,
+                where anyone founds a fully-collateralized stock index (up to {INDEX_MAX_COMPONENTS}{" "}
+                components, fees hard-capped in bytecode, {INDEX_VAULT_SHARE_PCT}% of every mint and
+                redeem fee never minted — pure backing accretion) — and <strong className="text-paper">The Colosseum</strong>, where stocks fight
+                head-to-head performance bouts staked in USDG, losers paying winners minus a{" "}
+                {ARENA_FEE_PCT}% fee that becomes $NAV buy pressure.
+              </p>
+            </div>
+          </div>
+
+          <Reveal>
+            <div className="flr-frame">
+              <div className="flr-head flex items-center justify-between gap-3 px-4 py-2.5 md:px-6">
+                <span className="flr-label">FLOOR — F1 WORLD · THE OVERWORLD</span>
+                <span className="flex items-center gap-2">
+                  <Led tone="crt" />
+                  <span className="flr-label flr-label--dim m-hide">EVERY LOCATION IS THE PROTOCOL</span>
+                </span>
+              </div>
+              <a href="/floor/" aria-label="Open the WORLD map in the Floor terminal" className="block">
+                <img
+                  src="./world/map.png"
+                  alt="Pixel-art overworld map of the FLOOR terminal — Kingdoms, Mage Tower, Bazaar, Bank, Treasury and Colosseum linked by torchlit roads"
+                  className="block w-full h-auto select-none"
+                  style={{ imageRendering: "pixelated" }}
+                  loading="lazy"
+                />
+              </a>
+              <div className="border-t border-[rgba(251,139,30,0.18)] px-4 py-2 md:px-6 flex flex-wrap items-center gap-x-6 gap-y-1">
+                <span className="flr-label flr-label--mut">KINGDOMS · FOUND & RULE STOCK INDEXES</span>
+                <span className="flr-label flr-label--mut">COLOSSEUM · STOCK VS STOCK BOUTS</span>
+                <span className="flr-label flr-label--mut m-hide">NO GAME TOKEN · NO NFTS · CHAIN STATE ONLY</span>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <p className="mt-5 md:mt-8 text-[13px] md:text-[14px] text-muted-dark flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+              <span>
+                {WORLD.arena && WORLD.indexFactory ? (
+                  <>Both realms are live, ownerless, and Sourcify-verified — see the registry below.</>
+                ) : (
+                  <>Gates sealed — the Kingdoms and Colosseum contracts are audited and await mainnet
+                  deployment. The map is live in the app today; each realm opens the moment its
+                  contract is deployed and source-verified.</>
+                )}
+              </span>
+              <span>
+                <Link className="verify-link whitespace-nowrap" to="/docs/index">READ THE INDEX DOCS →</Link>
+                <span className="mx-2 opacity-50">·</span>
+                <Link className="verify-link whitespace-nowrap" to="/docs/arena">READ THE ARENA DOCS →</Link>
+              </span>
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -831,7 +910,7 @@ export function Home() {
       <section className="py-8 md:py-24" id="registry">
         <div className="wrap">
           <div className="mb-5 md:mb-14">
-            <Reveal className="masthead mb-3 md:mb-8"><p className="kicker">The registry</p><span className="sec-no">No. 06</span></Reveal>
+            <Reveal className="masthead mb-3 md:mb-8"><p className="kicker">The registry</p><span className="sec-no">No. 07</span></Reveal>
             <hr className="metal-rule st-rule mb-4 md:mb-8" aria-hidden="true" />
             <div className="max-w-[640px]">
               <h2 className="mt-4 text-[26px] md:text-[42px]">Every address, on the table</h2>
@@ -912,7 +991,7 @@ export function Home() {
       <section className="py-8 md:py-24 bg-paper-2 grain border-y hairline" id="tokenomics">
         <div className="wrap">
           <div className="mb-5 md:mb-14">
-            <Reveal className="masthead mb-3 md:mb-8"><p className="kicker">Tokenomics</p><span className="sec-no">No. 07</span></Reveal>
+            <Reveal className="masthead mb-3 md:mb-8"><p className="kicker">Tokenomics</p><span className="sec-no">No. 08</span></Reveal>
             <hr className="metal-rule st-rule mb-4 md:mb-8" aria-hidden="true" />
             <div className="max-w-[640px]">
               <h2 className="mt-4 text-[26px] md:text-[42px]">Boring on purpose</h2>
@@ -937,7 +1016,7 @@ export function Home() {
       <section className="py-8 md:py-24" id="docs">
         <div className="wrap">
           <div className="mb-5 md:mb-14">
-            <Reveal className="masthead mb-3 md:mb-8"><p className="kicker">Read the fine print</p><span className="sec-no">No. 08</span></Reveal>
+            <Reveal className="masthead mb-3 md:mb-8"><p className="kicker">Read the fine print</p><span className="sec-no">No. 09</span></Reveal>
             <hr className="metal-rule st-rule mb-4 md:mb-8" aria-hidden="true" />
             <h2 className="mt-4 text-[26px] md:text-[42px]">Documentation</h2>
           </div>

@@ -138,6 +138,24 @@ Idle Pit collateral deployed as hook-gated Uniswap v4 liquidity with instant rec
 | PitYieldVault pyNVDA (call side) | `0x0295816Aa36597d5DA429deB23cd8b91d80CEb13` | [verified source](https://robinhoodchain.blockscout.com/address/0x0295816Aa36597d5DA429deB23cd8b91d80CEb13?tab=contract) |
 | PitYieldVault pyUSDG (put side) | `0x99C077cCB19D13Dc2c92CdA7804b9ABC1502dF34` | [verified source](https://robinhoodchain.blockscout.com/address/0x99C077cCB19D13Dc2c92CdA7804b9ABC1502dF34?tab=contract) |
 
+## The Colosseum — NavArena (LIVE)
+
+Stock-vs-stock performance bouts settled by PitOracleV2's anchor-verified rails. Winners split the losing pot; 2% of the losing pot is the only fee — 90% buys NAV via the Accumulator, 10% pays the settler.
+
+| Contract | Address | Explorer |
+|---|---|---|
+| NavArena — bout escrow + settlement | `0x51506936ae5A1146D1e3C6e804f25Fb58c492cb3` | [verified source](https://robinhoodchain.blockscout.com/address/0x51506936ae5A1146D1e3C6e804f25Fb58c492cb3?tab=contract) |
+
+## The Kingdoms — NavIndex (LIVE)
+
+Permissionless on-chain index tokens over tokenized stocks. Creators earn 90% of mint/redeem fees; 10% is never minted, accreting per-share backing for every holder.
+
+| Contract | Address | Explorer |
+|---|---|---|
+| NavIndexFactory — permissionless index deployer | `0x0c566a9ec97D57502d557FBD3F8AB0e6059cfeC3` | [verified source](https://robinhoodchain.blockscout.com/address/0x0c566a9ec97D57502d557FBD3F8AB0e6059cfeC3?tab=contract) |
+| NavIndexZap — one-click USDG issue/redeem | `0xD98803f42f57B8ed5ECa41312eDE366197c1808E` | [verified source](https://robinhoodchain.blockscout.com/address/0xD98803f42f57B8ed5ECa41312eDE366197c1808E?tab=contract) |
+| NAV Blue Chips (BLUE) — first founded kingdom | `0xA8b1425656550f1172D1323DC4d174E076D72Bea` | [verified source](https://robinhoodchain.blockscout.com/address/0xA8b1425656550f1172D1323DC4d174E076D72Bea?tab=contract) |
+
 ## Security & verification
 
 - **Verification policy:** every deployed contract is source-verified on the Robinhood Chain explorer immediately after deployment, and its address is added to these docs before any wiring or announcement.

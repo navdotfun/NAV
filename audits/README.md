@@ -15,6 +15,7 @@ Assessments are internal, adversarial, and conducted before every deployment; fi
 | 09 | Options frontend — review R4-B | Ticket · blotter · writer desk · RPC | Full stack re-audit; 16 findings fixed at `46f1a2f2`, QA-verified | 0 |
 | 10 | NAV Credit — contracts | CreditPair · CreditFactory (isolated lending) | Line-by-line + adversarial economics, Aave/Morpho parity review, on-chain oracle-cadence verification, 100k-run fuzz + 800×300 invariant campaign | 0 |
 | 11 | NAV Credit — frontend | CREDIT tab · lib/credit.ts · ticket · position strip | ABI/unit/rounding verification against the Solidity; 18 findings fixed at `90f8526a` | 0 |
+| 12 | Arena + Index — verification campaign | NavArena · NavIndexFactory · NavIndexToken · NavIndexZap | ~137.2M checks: dual differential bigint harnesses (69.5M arena + 64.8M index), 1.2M fuzz, 480k invariant calls; two independent pre-deploy audits, all findings fixed and re-verified | 0 |
 
 Severity classification used throughout: Critical (direct loss of user funds), High (conditional loss or fund lockup), Medium (accounting divergence, manipulation margin, degraded protection), Low (griefing, hygiene), Informational (documented behaviour).
 

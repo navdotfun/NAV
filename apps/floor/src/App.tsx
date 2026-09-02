@@ -21,13 +21,16 @@ import { DerivsView } from "./components/derivs/DerivsView";
 import { VaultView } from "./components/vault/VaultView";
 import { AnalyticsView } from "./components/analytics/AnalyticsView";
 import { CreditView } from "./components/credit/CreditView";
+import { WorldView } from "./components/world/WorldView";
+import { ArenaView } from "./components/arena/ArenaView";
+import { KingdomsView } from "./components/kingdoms/KingdomsView";
 
-export type FloorView = "SWAP" | "DERIVS" | "VAULT" | "CREDIT" | "STATS";
+export type FloorView = "SWAP" | "DERIVS" | "VAULT" | "CREDIT" | "STATS" | "WORLD" | "ARENA" | "INDEX";
 
 const USDG = TOKENS.USDG.address;
 
 export default function App() {
-  const [view, setView] = useState<FloorView>("SWAP");
+  const [view, setView] = useState<FloorView>("WORLD");
   const [listings, setListings] = useState<Listing[]>([]);
   const [booted, setBooted] = useState(false);
   const [block, setBlock] = useState<bigint>(0n);
@@ -154,10 +157,10 @@ export default function App() {
   const listing = listings.find((l) => l.token.symbol === order.symbol) ?? null;
 
   return (
-    <div className={`crt min-h-screen lg:h-screen lg:overflow-hidden flex flex-col bg-screen${view === "CREDIT" ? " theme-credit" : ""}`}>
+    <div className={`crt min-h-screen lg:h-screen lg:overflow-hidden flex flex-col bg-screen${view === "CREDIT" ? " theme-credit" : view === "ARENA" ? " theme-arena" : view === "INDEX" ? " theme-kingdom" : ""}`}>
       <TopBar block={block} />
       <TickerTape listings={listings} />
-      {view === "DERIVS" ? <DerivsView /> : view === "VAULT" ? <VaultView /> : view === "CREDIT" ? <CreditView /> : view === "STATS" ? <AnalyticsView /> : (
+      {view === "DERIVS" ? <DerivsView /> : view === "VAULT" ? <VaultView /> : view === "CREDIT" ? <CreditView /> : view === "STATS" ? <AnalyticsView /> : view === "WORLD" ? <WorldView setView={setView} /> : view === "ARENA" ? <ArenaView setView={setView} /> : view === "INDEX" ? <KingdomsView setView={setView} /> : (
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-[2px] p-[2px] min-h-0 lg:overflow-hidden">
         <div className="lg:col-span-3 flex flex-col gap-[2px] min-h-0 lg:overflow-y-auto">
           <SwapPanel

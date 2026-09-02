@@ -1,0 +1,53 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+# NOTE: via_ir intentionally OFF — deployed mainnet contracts were verified with
+# this exact compiler profile; changing it would break byte-for-byte verification.
+optimizer = true
+optimizer_runs = 200
+
+[profile.default.fuzz]
+runs = 256
+
+[profile.default.invariant]
+runs = 32
+depth = 25
+fail_on_revert = false
+call_override = false
+
+# Full security campaign: deep fuzz + long invariant runs. Slow by design.
+[profile.deep.fuzz]
+runs = 4096
+max_test_rejects = 500000
+
+[profile.deep.invariant]
+runs = 256
+depth = 50
+fail_on_revert = false
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+# ============================================================================
+# CAMPAIGN profile — multi-million-probe adversarial security campaign (v6).
+# 24 parameterised fuzz tests x 100k runs = ~2.4M randomised fuzz probes.
+# 8 invariants x 800 runs x 300 depth = ~1.9M randomised state transitions.
+# Slow by design; run via `FOUNDRY_PROFILE=campaign forge test`.
+# ============================================================================
+[profile.campaign]
+src = "src"
+out = "out"
+libs = ["lib"]
+optimizer = true
+optimizer_runs = 200
+
+[profile.campaign.fuzz]
+runs = 100000
+max_test_rejects = 20000000
+
+[profile.campaign.invariant]
+runs = 800
+depth = 300
+fail_on_revert = false
+call_override = false
+shrink_run_limit = 5000

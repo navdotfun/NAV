@@ -30,7 +30,7 @@ export function MarketWatch({ listings, booted, selected, onSelect }: {
         <span>MARKET WATCH · TOKENIZED STOCKS</span>
         <span className="text-txt-dim normal-case tracking-normal">{listings.length} LISTED</span>
       </div>
-      <div className="overflow-y-auto flex-1 min-h-0">
+      <div className="overflow-auto flex-1 min-h-0">
         <table className="w-full border-collapse">
           <thead className="sticky top-0 bg-panel">
             <tr className="text-left">
@@ -53,7 +53,7 @@ export function MarketWatch({ listings, booted, selected, onSelect }: {
                   <td className={`px-2 py-[3px] text-[11.5px] font-semibold ${sel ? "text-amber-2" : "text-amber"}`}>
                     {sel ? "▶" : ""}{l.token.symbol}
                   </td>
-                  <td className="px-2 py-[3px] text-right text-[11.5px] text-txt">
+                  <td className="px-2 py-[3px] text-right text-[11.5px] text-txt whitespace-nowrap">
                     {fmt.usd(l.price, l.price < 1 ? 4 : 2)}
                   </td>
                   <td className="px-2 py-[3px] text-right text-[11px] text-txt-dim">{fmt.usdCompact(l.usdgDepth)}</td>

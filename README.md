@@ -137,7 +137,7 @@ contracts/   Foundry source of every deployed contract (verified on-chain),
              including the full NAV Credit test campaign (contracts/test/credit)
 apps/        Frontend sources — site/ (nav.fun) and floor/ (the on-chain terminal)
 docs/        Protocol documentation as published at nav.fun/#/docs
-audits/      Sanitized audit reports and coverage summaries (12 reports)
+audits/      Sanitized audit reports and coverage summaries (13 reports)
 media/       Brand assets and production interface captures
 ```
 

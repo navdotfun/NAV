@@ -2,7 +2,7 @@
 
 **Stock-vs-stock performance bouts, settled by oracle-verified prints — live on Robinhood Chain.**
 
-The Floor's **WORLD** map (F6) leads to **The Colosseum** — the arena where tokenized stocks fight. A bout is a simple, brutal question: *over this exact window, which stock performs better?* NVDA vs TSLA over seven days. AAPL vs QQQ over a weekend. Anyone can create a bout, anyone can stake either side in USDG, and the losing pot pays the winning side pro-rata.
+The Floor's **WORLD** map (F1) leads to **The Colosseum** — the arena where tokenized stocks fight. A bout is a simple, brutal question: *over this exact window, which stock performs better?* NVDA vs TSLA over seven days. AAPL vs QQQ over a weekend. Anyone can create a bout, anyone can stake either side in USDG, and the losing pot pays the winning side pro-rata.
 
 The arena is **ownerless and immutable from the deploy block**. No admin keys, no pause switch, no fee dial. Every constant is burned into the bytecode.
 

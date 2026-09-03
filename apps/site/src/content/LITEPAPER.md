@@ -58,7 +58,7 @@ How the vault buys, in exact contract terms:
 
 ### 3.6 Credit — lending against the same stocks
 
-The Floor's **CREDIT** tab is an isolated-market money market for tokenized stocks — Aave's risk framework on Morpho Blue's minimal accounting, rebuilt for Robinhood Chain and wired into the same fee engine:
+The Floor's **CREDIT** venue (The Bank, on the WORLD map) is an isolated-market money market for tokenized stocks — Aave's risk framework on Morpho Blue's minimal accounting, rebuilt for Robinhood Chain and wired into the same fee engine:
 
 1. **Isolated pairs.** Each market is one collateral (NVDA, QQQ, AAPL or TSLA) against USDG. Markets share nothing: a crash in one collateral cannot touch lenders in another. Every pair is ownerless and parameter-frozen the block it deploys — no admin keys, no upgrades, no pause switch.
 2. **Aave-exact risk math.** Per-asset LTV / liquidation threshold / bonus, kinked utilization interest rates, 50%/100% close-factor liquidations and bad-debt socialization follow the Aave v3 / Morpho Blue playbook line-for-line, with conservative parameters sized to measured on-chain liquidity (borrow caps ≤ 10% of each pool's ±2% band depth).

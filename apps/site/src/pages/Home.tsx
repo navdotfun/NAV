@@ -8,7 +8,7 @@
      Everything else is at most a plain inline text link.
    - The homepage previews and points — it never re-implements the app. No
      swap, vault, or derivatives functionality is rebuilt here; the
-     derivatives section is a short editorial panel (the desk lives at F2
+     derivatives section is a short editorial panel (the desk lives at F3
      DERIVS inside the Floor terminal, whose #pit anchor id survives here).
    - Every number is a live hook read or an imported constant; addresses are
      never hand-typed. Loading renders "…", errors render "—".
@@ -241,7 +241,9 @@ function FlrTickerItem({ token, enabled }: { token: StockToken; enabled: boolean
 }
 
 /* F-key rail — presentational chrome only. The one door into the app is the
-   header's Launch App button; these chips name the terminal's real views. */
+   header's Launch App button; these chips name the terminal's real keyboard
+   shortcuts (in-app, venues are entered through the F1 WORLD map — only
+   WORLD and STATS render as tabs). */
 const FKEYS = ["F1 WORLD", "F2 SWAP", "F3 DERIVS", "F4 VAULT", "F5 CREDIT", "F6 STATS"] as const;
 
 function FloorPreview({
@@ -273,7 +275,7 @@ function FloorPreview({
           </Reveal>
           <Reveal delay={170}>
             <p className="mx-auto mt-3 max-w-[38em] text-[14px] md:text-[15px]" style={{ color: "#8fbf98" }}>
-              FLOOR is NAV's on-chain stock terminal — quotes, swaps, the F2 derivatives desk and
+              FLOOR is NAV's on-chain stock terminal — the world map, swaps, the F3 derivatives desk and
               the vault, rendered from public RPC. This preview is not a mock-up: every number is a
               live read.
             </p>

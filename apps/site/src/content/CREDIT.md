@@ -2,7 +2,7 @@
 
 **Isolated lending markets for tokenized stocks — live on Robinhood Chain.**
 
-The Floor's **CREDIT** tab (F4) is a money market built for one job: lend USDG against the same tokenized stocks that trade on the Floor, with every basis point of protocol revenue routed into the $NAV vault flywheel. It fuses **Morpho Blue's minimal share accounting** with **Aave v3's risk framework** — kinked interest rates, close-factor liquidations, bad-debt socialization — rebuilt from first principles for Robinhood Chain's oracle cadence.
+The Floor's **CREDIT** venue — The Bank on the F1 WORLD map (keyboard: F5) — is a money market built for one job: lend USDG against the same tokenized stocks that trade on the Floor, with every basis point of protocol revenue routed into the $NAV vault flywheel. It fuses **Morpho Blue's minimal share accounting** with **Aave v3's risk framework** — kinked interest rates, close-factor liquidations, bad-debt socialization — rebuilt from first principles for Robinhood Chain's oracle cadence.
 
 Every market is **ownerless and immutable from the deploy block**. No admin keys. No upgrades. No parameter changes. No pause guardian. What was deployed is what runs, forever.
 

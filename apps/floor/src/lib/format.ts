@@ -2,6 +2,8 @@
 
 export const fmt = {
   usd(v: number, d = 2): string {
+    if (!Number.isFinite(v)) return "\u2014";        // never render NaN/Infinity as a price
+    if (Math.abs(v) >= 1e15) return "$" + v.toExponential(2); // absurd pool prices stay truthful but bounded
     return "$" + v.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
   },
   /** Sub-cent USD prices without mid-number wrapping: $0.0₄961 = $0.0000961.
@@ -18,24 +20,32 @@ export const fmt = {
     return `$0.0${sub}${digits}`;
   },
   usdCompact(v: number): string {
+    if (!Number.isFinite(v)) return "\u2014";
+    if (v >= 1e15) return "$" + v.toExponential(2);
     if (v >= 1e9) return "$" + (v / 1e9).toFixed(2) + "B";
     if (v >= 1e6) return "$" + (v / 1e6).toFixed(2) + "M";
     if (v >= 1e3) return "$" + (v / 1e3).toFixed(1) + "K";
     return "$" + v.toFixed(2);
   },
   compact(v: number): string {
+    if (!Number.isFinite(v)) return "\u2014";
+    if (v >= 1e15) return v.toExponential(2);
     if (v >= 1e9) return (v / 1e9).toFixed(2) + "B";
     if (v >= 1e6) return (v / 1e6).toFixed(2) + "M";
     if (v >= 1e3) return (v / 1e3).toFixed(1) + "K";
     return v.toFixed(0);
   },
   num(v: number, d = 2): string {
+    if (!Number.isFinite(v)) return "\u2014";
+    if (Math.abs(v) >= 1e15) return v.toExponential(2);
     return v.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
   },
   pct(v: number, d = 2): string {
+    if (!Number.isFinite(v)) return "—";
     return (v * 100).toFixed(d) + "%";
   },
   delta(v: number): string {
+    if (!Number.isFinite(v)) return "—";
     return (v >= 0 ? "▲ " : "▼ ") + Math.abs(v).toFixed(2) + "%";
   },
 };

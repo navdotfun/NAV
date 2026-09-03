@@ -2,7 +2,7 @@
 
 **Permissionless on-chain stock indexes, founded by anyone, backed 1:1 by tokenized stocks — live on Robinhood Chain.**
 
-The Floor's **WORLD** map (F6) opens onto **The Kingdoms** — the index realm. Anyone can *found a kingdom*: an ERC-20 index token fully collateralized by a basket of 2–10 tokenized stocks held inside the index contract itself. No custodian, no rebalancing committee, no NAV oracle needed to hold or redeem — every index share is redeemable in kind, block by block, for its exact pro-rata slice of the underlying stocks.
+The Floor's **WORLD** map (F1) opens onto **The Kingdoms** — the index realm. Anyone can *found a kingdom*: an ERC-20 index token fully collateralized by a basket of 2–10 tokenized stocks held inside the index contract itself. No custodian, no rebalancing committee, no NAV oracle needed to hold or redeem — every index share is redeemable in kind, block by block, for its exact pro-rata slice of the underlying stocks.
 
 Every index is **ownerless and immutable from the deploy block**. The founder picks the components, the weights, and the fees at creation — and can never change them. What was founded is what runs, forever.
 

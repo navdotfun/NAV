@@ -2,7 +2,7 @@
 
 **Isolated lending markets for tokenized stocks — live on Robinhood Chain.**
 
-The Floor's **CREDIT** tab (F4) is a money market built for one job: lend USDG against the same tokenized stocks that trade on the Floor, with every basis point of protocol revenue routed into the $NAV vault flywheel. It fuses **Morpho Blue's minimal share accounting** with **Aave v3's risk framework** — kinked interest rates, close-factor liquidations, bad-debt socialization — rebuilt from first principles for Robinhood Chain's oracle cadence.
+The Floor's **CREDIT** venue — The Bank on the F1 WORLD map (keyboard: F5) — is a money market built for one job: lend USDG against the same tokenized stocks that trade on the Floor, with every basis point of protocol revenue routed into the $NAV vault flywheel. It fuses **Morpho Blue's minimal share accounting** with **Aave v3's risk framework** — kinked interest rates, close-factor liquidations, bad-debt socialization — rebuilt from first principles for Robinhood Chain's oracle cadence.
 
 Every market is **ownerless and immutable from the deploy block**. No admin keys. No upgrades. No parameter changes. No pause guardian. What was deployed is what runs, forever.
 
@@ -52,4 +52,4 @@ Each market is a standalone contract holding only its own collateral and its own
 
 ## Verification
 
-The contracts shipped after a **~109.6M-check verification campaign**: a 102.9M-check differential big-integer harness mirroring every state transition, 2.8M fuzz executions, 3.84M invariant assertions, 56 unit tests, and the full Slither detector suite — findings and methodology are published in the [Repository](/docs/repository) tab (audits 10 and 11).
+The contracts shipped after a **~109.6M-check verification campaign**: a 102.9M-check differential big-integer harness mirroring every state transition, 2.8M fuzz executions, 3.84M invariant assertions, 56 unit tests, and the full Slither detector suite — findings and methodology are published in the official repository at [github.com/navdotfun/NAV](https://github.com/navdotfun/NAV) (audits 10 and 11).

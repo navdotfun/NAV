@@ -27,6 +27,16 @@ import { KingdomsView } from "./components/kingdoms/KingdomsView";
 
 export type FloorView = "SWAP" | "DERIVS" | "VAULT" | "CREDIT" | "STATS" | "WORLD" | "ARENA" | "INDEX";
 
+/* Venue chrome — SWAP/DERIVS/VAULT/CREDIT are locations on the F1 WORLD map
+   (the Bazaar, the Mage Tower, the Treasury, the Bank), so each carries the
+   same ← MAP bar the Colosseum and the Kingdoms use. Pure navigation. */
+const VENUE_META: Partial<Record<FloorView, { name: string; desc: string; key: string }>> = {
+  SWAP: { name: "THE BAZAAR", desc: "SWAP TOKENIZED STOCKS", key: "F2" },
+  DERIVS: { name: "MAGE TOWER", desc: "OPTIONS — CALLS & PUTS", key: "F3" },
+  VAULT: { name: "THE TREASURY", desc: "NAV VAULT — STAKE & EARN", key: "F4" },
+  CREDIT: { name: "THE BANK", desc: "LEND & BORROW USDG", key: "F5" },
+};
+
 const USDG = TOKENS.USDG.address;
 
 export default function App() {
@@ -156,10 +166,24 @@ export default function App() {
 
   const listing = listings.find((l) => l.token.symbol === order.symbol) ?? null;
 
+  /* R5-02: moving between map and venue rebuilds the screen — move focus to
+     the venue heading so keyboard/AT users land somewhere meaningful. */
+  const venueHeading = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => { venueHeading.current?.focus({ preventScroll: true }); }, [view]);
+
   return (
     <div className={`crt min-h-screen lg:h-screen lg:overflow-hidden flex flex-col bg-screen${view === "CREDIT" ? " theme-credit" : view === "ARENA" ? " theme-arena" : view === "INDEX" ? " theme-kingdom" : ""}`}>
       <TopBar block={block} />
       <TickerTape listings={listings} />
+      {VENUE_META[view] && (
+        <div className="mx-[2px] mt-[2px] panel flex items-center gap-3 px-3 py-1.5">
+          <h1 ref={venueHeading} tabIndex={-1} className="panel-title !p-0 outline-none text-[inherit] m-0">
+            {VENUE_META[view]!.name} <span className="text-amber-dim">· {VENUE_META[view]!.key}</span>
+          </h1>
+          <span className="text-txt-dim text-[10px] hidden sm:inline">{VENUE_META[view]!.desc}</span>
+          <button type="button" className="fkey ml-auto px-3 py-1 text-[11px]" onClick={() => setView("WORLD")}>← MAP</button>
+        </div>
+      )}
       {view === "DERIVS" ? <DerivsView /> : view === "VAULT" ? <VaultView /> : view === "CREDIT" ? <CreditView /> : view === "STATS" ? <AnalyticsView /> : view === "WORLD" ? <WorldView setView={setView} /> : view === "ARENA" ? <ArenaView setView={setView} /> : view === "INDEX" ? <KingdomsView setView={setView} /> : (
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-[2px] p-[2px] min-h-0 lg:overflow-hidden">
         <div className="lg:col-span-3 flex flex-col gap-[2px] min-h-0 lg:overflow-y-auto">
